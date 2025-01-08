@@ -1,19 +1,33 @@
 import { getKindeServerSession, LoginLink, LogoutLink, RegisterLink } from '@kinde-oss/kinde-auth-nextjs/server'
-import { Button } from '@nextui-org/react';
+import { Button, User } from '@nextui-org/react';
 import React from 'react'
+import UserProfilePanel from './UserProfilePanel';
+import prisma from '../lib/prisma';
 
 const SigninPanel = async () => {
     const { isAuthenticated, getUser } = await getKindeServerSession();
     const user = await getUser();
+    let dbUser = null;
+   
     if (await isAuthenticated()) 
-        return (
-            <div>
-                <p>Welcome back, {user?.given_name}!</p>
-                <LogoutLink>
-                    <Button>Sign out</Button>
-                </LogoutLink>
-            </div>
+    {
+        if (user?.id) {
+                dbUser = await prisma.user.findUnique({
+                    where: {
+                        id: user.id
+                    },
+                });
+            }
+
+         return (
+             <>  {dbUser!! && 
+                <UserProfilePanel user={dbUser}/>
+                }
+            </>
         )
+       }
+   
+    
   return (
       <div className='flex gap-3'>
           
