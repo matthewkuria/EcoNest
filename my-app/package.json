@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@heroicons/react": "^2.2.0",
     "@kinde-oss/kinde-auth-nextjs": "^2.4.6",
     "@nextui-org/react": "^2.6.11",
     "@prisma/client": "^6.2.1",
