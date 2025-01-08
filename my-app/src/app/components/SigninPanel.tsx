@@ -1,4 +1,4 @@
-import { getKindeServerSession, LoginLink, RegisterLink } from '@kinde-oss/kinde-auth-nextjs/server'
+import { getKindeServerSession, LoginLink, LogoutLink, RegisterLink } from '@kinde-oss/kinde-auth-nextjs/server'
 import { Button } from '@nextui-org/react';
 import React from 'react'
 
@@ -9,6 +9,9 @@ const SigninPanel = async () => {
         return (
             <div>
                 <p>Welcome back, {user?.given_name}!</p>
+                <LogoutLink>
+                    <Button>Sign out</Button>
+                </LogoutLink>
             </div>
         )
   return (
