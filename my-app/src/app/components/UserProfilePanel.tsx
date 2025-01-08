@@ -2,6 +2,7 @@
 import { LogoutLink } from '@kinde-oss/kinde-auth-nextjs';
 import { Dropdown, DropdownTrigger, User, DropdownMenu, DropdownItem } from '@nextui-org/react';
 import { User as PrismaUser } from '@prisma/client';
+import Link from 'next/link';
 import React from 'react'
 
 
@@ -26,8 +27,10 @@ const UserProfilePanel = ( {user} :UserProfilePanelProps) => {
           <DropdownItem key="profile" className="h-14 gap-2">
             <p className="font-bold">Signed in as</p>
             <p className="font-bold">{ user.firstName}</p>
-          </DropdownItem>
-         
+              </DropdownItem>
+              <DropdownItem key="profile">
+                  <Link href="/user/profile">Profile</Link>
+            </DropdownItem>
           <DropdownItem key="logout" color="danger">
             <LogoutLink> Log Out</LogoutLink>
           </DropdownItem>

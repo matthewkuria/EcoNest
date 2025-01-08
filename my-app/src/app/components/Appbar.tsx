@@ -1,6 +1,6 @@
 "use client"
 import { HomeModernIcon } from '@heroicons/react/16/solid'
-import { Navbar, NavbarContent, NavbarMenuToggle, NavbarBrand, NavbarItem, Button, NavbarMenu, NavbarMenuItem } from '@nextui-org/react'
+import { Navbar, NavbarContent, NavbarMenuToggle, NavbarBrand,  NavbarMenu, } from '@nextui-org/react'
 import Link from 'next/link'
 import React, { ReactNode } from 'react'
 
