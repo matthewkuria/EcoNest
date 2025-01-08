@@ -2,9 +2,13 @@
 import { HomeModernIcon } from '@heroicons/react/16/solid'
 import { Navbar, NavbarContent, NavbarMenuToggle, NavbarBrand, NavbarItem, Button, NavbarMenu, NavbarMenuItem } from '@nextui-org/react'
 import Link from 'next/link'
-import React from 'react'
+import React, { ReactNode } from 'react'
 
-const Appbar = () => {
+
+interface AppbarProps { 
+    children: ReactNode
+}
+const Appbar = ({children}:AppbarProps) => {
     const [isMenuOpen, setIsMenuOpen] = React.useState(false);
   return (
     <Navbar className='shadow-md' onMenuOpenChange={setIsMenuOpen}>
@@ -25,7 +29,7 @@ const Appbar = () => {
        
       </NavbarContent>
       <NavbarContent justify="end">
-        
+        {children}
       </NavbarContent>
       <NavbarMenu>
         
