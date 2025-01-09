@@ -26,7 +26,6 @@ const Appbar = ({children}:AppbarProps) => {
       </NavbarContent>
 
       <NavbarContent className="hidden sm:flex gap-4" justify="center">
-       
       </NavbarContent>
       <NavbarContent justify="end">
         {children}
