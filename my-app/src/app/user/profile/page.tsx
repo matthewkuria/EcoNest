@@ -18,7 +18,7 @@ const ProfilePage = async () => {
               <div className="flex">
                   <div className="flex flex-col items-center justify-start gap-4">
                   <Avatar className='w-20 h-20' src={dbUser?.avatarUrl ?? '/avatar.png'} />
-                  <UploadAvatar />
+                      <UploadAvatar userId={dbUser?.id! } />
               </div>
               </div>
               <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4'>

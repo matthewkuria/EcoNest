@@ -2,12 +2,17 @@
 import FileInput from '@/app/components/fileUpload';
 import { PencilIcon } from '@heroicons/react/24/solid'
 import { Button, Modal, ModalContent, ModalHeader, ModalBody, ModalFooter, useDisclosure } from '@nextui-org/react'
-import React from 'react'
+import React, { useState } from 'react'
 import Image from 'next/image'
+import { uploadAvatar } from '@/app/lib/upload';
+import { updateUserAvatar } from '@/app/lib/actions/user';
+import { useRouter } from 'next/navigation';
 
-const UploadAvatar = () => {
+const UploadAvatar = ({userId}:{userId: string}) => {
     const { isOpen, onOpen, onOpenChange } = useDisclosure();
-    const [image, setImage] = React.useState<File | null>(null);
+    const [image, setImage] = useState<File | null>(null);
+    const [isSubmitting, setIsSubmitting] = useState(false);
+    const router = useRouter();
   return (
       <div>
           <button onClick={isOpen ? onOpenChange : onOpen}>
@@ -26,7 +31,19 @@ const UploadAvatar = () => {
                 <Button color="danger" variant="light" onPress={onClose}>
                   Cancel
                 </Button>
-                <Button color="primary" onPress={onClose}>
+                <Button isLoading={isSubmitting} color="primary" onPress={async()=>{
+                    setIsSubmitting(true);
+                    if(!image){
+                        onClose();
+                        return;
+                    }
+                    // upload image
+                    const avatarUrl = await uploadAvatar(image);
+                    const result = await updateUserAvatar(avatarUrl, userId);
+                    router.refresh();
+                    setIsSubmitting(false);
+                    onClose();
+                }}>
                   Upload
                 </Button>
               </ModalFooter>
