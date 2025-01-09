@@ -30,7 +30,6 @@ const SigninPanel = async () => {
     
   return (
       <div className='flex gap-3'>
-          
           <Button color='primary'>
               <LoginLink>Sign in</LoginLink>
           </Button>
