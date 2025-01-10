@@ -1,6 +1,6 @@
 import { createClient } from "@supabase/supabase-js";
 
-export async function uploadAvatar(image: File,) {
+export async function uploadAvatar(image: File) {
     const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!;
     const supabaseKey = process.env.NEXT_PUBLIC_SUPABASE_KEY!;
 
