@@ -1,8 +1,21 @@
-import React from 'react'
+"use client";   
+import React, { useState } from 'react'
+import Stepper from './Stepper'
 
+
+const steps = [
+    { label: 'Basic Information' },
+    { label: 'Location' },
+    { label: 'Details' },
+    { label: 'Photos' },
+    { label: 'Finish' },
+ ]
 const AddPropertiesForm = () => {
+    const [ step, setStep ] = useState(0)
   return (
-    <div>AddPropertiesForm</div>
+      <div>
+          <Stepper items={steps} activeItem={step} setActiveItem={setStep} />
+    </div>
   )
 }
 

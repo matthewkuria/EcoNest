@@ -1,8 +1,9 @@
 import React from 'react'
+import AddPropertiesForm from './_components/AddPropertiesForm'
 
 const AddPropertyPage = () => {
   return (
-    <div>AddPropertyPage</div>
+      <AddPropertiesForm />
   )
 }
 
