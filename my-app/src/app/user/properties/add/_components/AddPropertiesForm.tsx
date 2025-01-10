@@ -4,7 +4,7 @@ import Stepper from './Stepper'
 
 
 const steps = [
-    { label: 'Basic Information' },
+    { label: 'Basic Info' },
     { label: 'Location' },
     { label: 'Details' },
     { label: 'Photos' },

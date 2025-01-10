@@ -1,3 +1,4 @@
+import { cn } from '@nextui-org/react';
 import React from 'react'
 
 interface StepperProps { 
@@ -9,12 +10,29 @@ interface StepperProps {
 
 const Stepper = (props:StepperProps) => {
   return (
-      <div>
+      <div className={cn("flex items-center justify-around", props.className)}>
           {props.items.map((item, index) => (
               <>
-                  <div>{index + 1}</div>
+              <div className="flex flex-col items-center" key={index}>              
+                  <div className={cn("rounded-full w-6 h-6 flex justify-center items-center transition", {
+                    'bg-primary-400 text-white': index === props.activeItem,
+                      'bg-gray-400 text-white': index > props.activeItem,
+                       'bg-primary-700 text-white': index < props.activeItem,
+                        'cursor-pointer': index <= props.activeItem,
+                  })}
+                      {...index > props.activeItem ? {} : { onClick: () => props.setActiveItem(index) }}    
+                  >{index + 1}</div>
                   <p className="">{ item.label}</p>
-              </>
+                  </div>
+                   { index !== props.items.length - 1 && (
+                      <div className={cn("border h-0 w-full -mt-5 relative after:absolute after:left-0 after:top-0 after:border after:transition-all after:duration-300 after:ease-in",
+                          {
+                              "after:w-full after:border-primary-400": index < props.activeItem,
+                              "after:w-0 after:border-gray-400": index >= props.activeItem
+                          }
+                      )}></div>
+              )}
+            </>
           ))}
     </div>
   )
